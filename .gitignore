@@ -1,5 +1,6 @@
 *.o
 *.uf2
-uf2usage
 uf2families.json
+jsondata.hpp
+uf2usage
 json2c

@@ -33,13 +33,22 @@ int main(int argc, char** argv)
 		}
 	}
 
+	std::cout << "#pragma once" << std::endl;
+	std::cout << "#include <z/core/array.hpp>" << std::endl;
+	std::cout << "#include <z/core/string.hpp>\n" << std::endl;
 	std::cout << "namespace jsondata\n{" << std::endl;
 	for (auto& i : data)
 	{
-		std::cout << "\tconst z::core::array<zstring> " << i.first << " = {" << std::endl;
+		bool isInt = (i.first == "id");
+		zstring type = isInt ? "uint32_t" : "zstring";
+		std::cout << "\tconst z::core::array<" << type << "> " << i.first << " = {" << std::endl;
+
 		for (auto& value : i.second)
 		{
-			std::cout << "\t\t\"" << value << "\"," << std::endl;
+			if (isInt)
+				std::cout << "\t\t" << value << "," << std::endl;
+			else
+				std::cout << "\t\t\"" << value << "\"," << std::endl;
 		}
 		std::cout << "\t};" << std::endl;
 	}
