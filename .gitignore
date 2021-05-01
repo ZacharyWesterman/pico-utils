@@ -1,2 +1,5 @@
 *.o
+*.uf2
 uf2usage
+uf2families.json
+json2c
