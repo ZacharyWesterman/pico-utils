@@ -3,7 +3,7 @@
 all: uf2usage
 
 uf2usage: uf2usage.cpp jsondata.hpp
-	g++ -lzed --std=c++17 $< -o $@
+	g++ -lzed --std=c++17 -Os $< -o $@
 
 uf2families.json:
 	wget https://raw.githubusercontent.com/microsoft/uf2/master/utils/uf2families.json
