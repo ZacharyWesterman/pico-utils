@@ -6,7 +6,7 @@ uf2usage: uf2usage.cpp json2c uf2families.json
 	g++ -lzed --std=c++17 $< -o $@
 
 uf2families.json:
-	wget https://github.com/microsoft/uf2/blob/master/utils/uf2families.json
+	wget https://raw.githubusercontent.com/microsoft/uf2/master/utils/uf2families.json
 
 json2c: json2c.cpp
 	g++ -lzed --std=c++17 $< -o $@
