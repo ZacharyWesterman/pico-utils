@@ -55,7 +55,7 @@ int main(int argc, char** argv)
 	}
 
 	// std::cout << "-"_asc.repeat(70) << std::endl;
-	std::cout << "Family ID: " << family << std::endl;
+	std::cout << "Family ID:   " << family << std::endl;
 	std::cout << "Flash Usage: " << totalBytes << " Bytes (" << ((float)totalBytes / 1024) << " KiB)" << std::endl;
 
 }
