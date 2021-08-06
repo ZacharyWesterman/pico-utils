@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+for i in {1..10}
+do
+	echo -n $'\r'"Connecting to Pico over serial (attempt $i of 10)"
+	minicom -b 115200 -o -D /dev/ttyACM0 && echo && exit 0
+done
+echo
+echo "Failed to connect to the Pico. Perhaps it is unplugged?"

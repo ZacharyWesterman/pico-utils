@@ -1,6 +1,7 @@
 
+EXECLIST = uf2usage picoterm
 
-all: uf2usage
+all: $(EXECLIST)
 
 uf2usage: uf2usage.cpp jsondata.hpp
 	g++ -lzed --std=c++17 -Os $< -o $@
@@ -17,10 +18,10 @@ json2c: json2c.cpp
 clean:
 	rm uf2usage uf2families.json json2c jsondata.hpp
 
-install: uf2usage
-	cp $< ~/.local/bin/
+install: $(EXECLIST)
+	cp $^ ~/.local/bin/
 
 uninstall:
-	rm ~/.local/bin/{uf2usage}
+	cd ~/.local/bin && rm -f $(EXECLIST)
 
 .PHONY: clean install uninstall
