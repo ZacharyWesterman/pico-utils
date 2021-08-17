@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ] || [ ! -e "$1" ]
+then
+	echo "Usage: uf2topico {input.uf2}"
+	exit 1
+fi
+
+cp "$1" "/run/media/$USER/RPI-RP2/$1"

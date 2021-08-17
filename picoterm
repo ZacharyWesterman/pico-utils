@@ -1,8 +1,26 @@
 #!/usr/bin/env bash
-for i in {1..10}
-do
-	echo -n $'\r'"Connecting to Pico over serial (attempt $i of 10)"
-	minicom -b 115200 -o -D /dev/ttyACM0 && echo && exit 0
-done
-echo
-echo "Failed to connect to the Pico. Perhaps it is unplugged?"
+if [ "$1" == '-i' ] || [ "$1" == '--interactive' ]
+then
+	if ! which minicom &>/dev/null
+	then
+		echo "Please install minicom for interactive mode."
+		exit 1
+	fi
+fi
+
+if [ ! -e /dev/ttyACM0 ]
+then
+	echo "Waiting for /dev/ttyACM0 to exist..."
+	while :
+	do
+		[ -e /dev/ttyACM0 ] && break
+		sleep 1
+	done
+fi
+
+if [ "$1" == '-i' ] || [ "$1" == '--interactive' ]
+then
+	minicom -b 115200 -o -D /dev/ttyACM0
+else
+	screen /dev/ttyACM0
+fi

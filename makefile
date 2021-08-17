@@ -1,5 +1,5 @@
 
-EXECLIST = uf2usage picoterm
+EXECLIST = uf2usage picoterm uf2topico
 
 all: $(EXECLIST)
 
